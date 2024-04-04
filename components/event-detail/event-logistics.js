@@ -2,6 +2,7 @@ import AddressIcon from 'Icons/address-icon';
 import DateIcon from 'Icons/date-icon';
 import LogisticsItem from './logistics-item';
 import styles from './event-logistics.module.css';
+import Image from 'next/image';
 
 const EventLogistics = ({ date, address, image, imageAlt }) => {
   const humanReadableDate = new Date(date).toLocaleDateString('en-GB', {
@@ -14,7 +15,7 @@ const EventLogistics = ({ date, address, image, imageAlt }) => {
   return (
     <section className={styles.logistics}>
       <div className={styles.image}>
-        <img src={`/${image}`} alt={imageAlt} />
+        <Image src={`/${image}`} alt={imageAlt} width={300} height={300} />
       </div>
       <ul className={styles.list}>
         <LogisticsItem icon={DateIcon}>

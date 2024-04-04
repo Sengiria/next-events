@@ -4,6 +4,8 @@ import EventSummary from 'Components/event-detail/event-summary';
 import ErrorAlert from 'Components/ui/error-alert';
 import { getEvent, getFeaturedEvents } from 'helpers/api-utils';
 import React, {Fragment} from 'react';
+import Head from 'next/head';
+import Comments from 'Components/input/comments';
 
 const EventDetailsPage = ({event}) => {
     if (!event) {
@@ -16,11 +18,19 @@ const EventDetailsPage = ({event}) => {
     
     return (
         <Fragment>
+            <Head>
+                <title>{event.title}</title>
+                <meta 
+                    name='description'
+                    content={event.description}
+                />
+            </Head>
             <EventSummary title={event.title} />
             <EventLogistics date={event.date} address={event.location} image={event.image} imageAlt={event.title} />
             <EventContent>
                 <p>{event.description}</p>
             </EventContent>
+            <Comments eventId={event.id} />
         </Fragment>
     );
 }

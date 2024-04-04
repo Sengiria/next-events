@@ -4,21 +4,9 @@ import Button from 'Components/ui/button';
 import ErrorAlert from 'Components/ui/error-alert';
 import { getFilteredEvents } from 'dummy-data';
 import React, {Fragment} from 'react';
+import Head from 'next/head';
 
 const FilteredEvents = ({filteredEvents, hasError, date}) => {
-   /* const router = useRouter();
-    const filterData = router.query.slug;
-
-    if (!filterData) {
-        return <p className='center'>Loading...</p>;
-    }
-
-    const filteredYear = filterData[0];
-    const filteredMonth = filterData[1];
-
-    const numYear = +filteredYear;
-    const numMonth = +filteredMonth; */
-
     if ( hasError ) {
         return (
         <Fragment>
@@ -49,6 +37,13 @@ const FilteredEvents = ({filteredEvents, hasError, date}) => {
 
   return (
     <Fragment>
+        <Head>
+            <title>FilteredEvents</title>
+            <meta 
+            name='description'
+            content={`All events for ${date.month}/${date.year}.`}
+        />
+        </Head>
       <ResultsTitle date={dateValue} />
       <EventList items={filteredEvents} />
     </Fragment>

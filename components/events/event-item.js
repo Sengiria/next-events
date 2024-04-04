@@ -4,6 +4,7 @@ import Button from '../ui/button';
 import DateIcon from 'Icons/date-icon';
 import AddressIcon from '../ui/icons/address-icon';
 import ArrowRightIcon from '../ui/icons/arrow-right';
+import Image from 'next/image';
 
 const EventItem = ({event}) => {
     const { title, image, date, location, id } = event;
@@ -12,7 +13,7 @@ const EventItem = ({event}) => {
     const refLink = `/events/${id}`
     return (
         <li className={styles.item}>
-            <img src={'/' + image} alt={title} />
+            <Image src={'/' + image} alt={title} width={250} height={160}  />
             <div className={styles.content}>
                 <div className={styles.summary}>
                     <h2>{title}</h2>
